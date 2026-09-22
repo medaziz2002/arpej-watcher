@@ -1,0 +1,40 @@
+name: ARPEJ 24/7 Watcher
+
+on:
+  schedule:
+    # Déclenchement toutes les 5 minutes
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Permet de lancer manuellement depuis le site GitHub
+
+permissions:
+  contents: write # Nécessaire pour sauvegarder arpej_state.json
+
+jobs:
+  check-residences:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Installer les dépendances
+        run: |
+          pip install -r requirements.txt
+
+      - name: Lancer la surveillance
+        run: |
+          python arpej_watcher.py
+
+      - name: Sauvegarder l'état pour la prochaine fois
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add arpej_state.json || true
+          git commit -m "Mise à jour état [skip ci]" || exit 0
+          git push
