@@ -1,7 +1,55 @@
 {
+  "https://www.arpej.fr/fr/residence/claudie-haignere-palaiseau/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/residence-etudiante-rosa-parks-eaubonne/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/residence-etudiante-meunier-champs-sur-marne/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/jean-zay-residence-jeunes-actifs-cesson/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/frida-kahlo-residence-etudiante-montreuil/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/alexandre-manceau-residence-jeunes-actifs-palaiseau/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
   "https://www.arpej.fr/fr/residence/jacques-henri-lartigue-residence-etudiante-courbevoie/": {
     "availability": 0,
     "name": "Résidence étudiante Jacques-Henri Lartigue"
+  },
+  "https://www.arpej.fr/fr/residence/la-cerisaie-residence-jeunes-actifs-fresnes/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/volti-residence-etudiante-cachan/": {
+    "availability": 1,
+    "name": "Résidence étudiante Volti"
+  },
+  "https://www.arpej.fr/fr/residence/pierre-gilles-de-gennes-residence-etudiante-villejuif/": {
+    "availability": 4,
+    "name": "CLAUDIE HAIGNERÉ - PALAISEAU"
+  },
+  "https://www.arpej.fr/fr/residence/residence-etudiants-paris-5eme-arrondissement-scipion-arpej/": {
+    "availability": 0,
+    "name": "Attention"
+  },
+  "https://www.arpej.fr/fr/residence/les-choux-de-creteil-residence-etudiante/": {
+    "availability": 0,
+    "name": "Résidence étudianteLes Choux"
+  },
+  "https://www.arpej.fr/fr/residence/du-parc-residence-etudiante-charenton-le-pont/": {
+    "availability": 0,
+    "name": "Résidence étudiante Du Parc"
   },
   "https://www.arpej.fr/fr/residence/residence-etudiants-joinville-le-pont-les-nouveaux-ponts-arpej-2/": {
     "availability": 0,
@@ -15,28 +63,20 @@
     "availability": 0,
     "name": "Résidence étudiante Juliette Drouet"
   },
-  "https://www.arpej.fr/fr/residence/eugene-chevreul-residence-etudiante-massy/": {
-    "availability": 0,
-    "name": "Résidence étudiante Eugène Chevreul"
-  },
   "https://www.arpej.fr/fr/residence/val-pompadour-residence-etudiante-valenton/": {
     "availability": 0,
     "name": "Résidence étudiante Val Pompadour"
-  },
-  "https://www.arpej.fr/fr/residence/volti-residence-etudiante-cachan/": {
-    "availability": 1,
-    "name": "Résidence étudiante Volti"
   },
   "https://www.arpej.fr/fr/residence/nicolas-appert-residence-etudiante-ivry-sur-seine/": {
     "availability": 0,
     "name": "Résidence étudiante Nicolas Appert"
   },
-  "https://www.arpej.fr/fr/residence/du-parc-residence-etudiante-charenton-le-pont/": {
-    "availability": 0,
-    "name": "Résidence étudiante Du Parc"
-  },
   "https://www.arpej.fr/fr/residence/porte-ditalie-residence-etudiante-le-kremlin-bicetre/": {
     "availability": 0,
     "name": "Résidence étudiante Porte D’Italie"
+  },
+  "https://www.arpej.fr/fr/residence/eugene-chevreul-residence-etudiante-massy/": {
+    "availability": 0,
+    "name": "Résidence étudiante Eugène Chevreul"
   }
 }
