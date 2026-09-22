@@ -1,20 +1,15 @@
 #!/usr/bin/env python3
 """
-arpej_watcher.py
-Surveille la disponibilité des résidences ARPEJ (92 et 94)
-et envoie une notification push via ntfy.sh dès qu'un logement se libère.
-
-Conçu pour tourner sur GitHub Actions (voir .github/workflows/arpej.yml) :
-le topic ntfy est lu depuis la variable d'environnement NTFY_TOPIC
-(un secret GitHub côté serveur), avec une valeur par défaut pour les
-tests en local.
+arpej_watcher.py - Version serveur cloud (compatible Render Free Tier)
 """
 
 import json
 import os
 import re
 import sys
+import threading
 import time
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
 import requests
@@ -23,10 +18,7 @@ from bs4 import BeautifulSoup
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "aziz-arpej-alertes-9f31")
 
 RESIDENCES_URLS = [
-    # Hauts-de-Seine — 92
     "https://www.arpej.fr/fr/residence/jacques-henri-lartigue-residence-etudiante-courbevoie/",
-
-    # Val-de-Marne — 94
     "https://www.arpej.fr/fr/residence/residence-etudiants-joinville-le-pont-les-nouveaux-ponts-arpej-2/",
     "https://www.arpej.fr/fr/residence/residence-etudiante-saint-mande/",
     "https://www.arpej.fr/fr/residence/saint-mande-residence-etudiante-paris/",
@@ -95,10 +87,7 @@ def parse_residence(session: requests.Session, url: str) -> dict | None:
     text = soup.get_text(" ", strip=True)
 
     title_tag = soup.find("h1")
-    if title_tag:
-        name = clean_text(title_tag.get_text())
-    else:
-        name = url.strip("/").split("/")[-1].replace("-", " ").title()
+    name = clean_text(title_tag.get_text()) if title_tag else url.strip("/").split("/")[-1].replace("-", " ").title()
 
     availability = 0
     m = re.search(r"(\d+)\s+logements?\s+disponibles?", text, re.IGNORECASE)
@@ -142,20 +131,35 @@ def check_once() -> None:
     save_state(state)
 
 
-def main() -> None:
-    # Si lancé avec --once, une seule passe (pour les tests rapides)
-    if "--once" in sys.argv:
-        check_once()
-        return
+def scraper_worker() -> None:
+    print("[DÉMARRAGE] Boucle de scraping lancée (toutes les 60s)...")
+    while True:
+        try:
+            check_once()
+        except Exception as e:
+            print(f"[ERREUR BOUCLE] {e}", file=sys.stderr)
+        time.sleep(60)
 
-    # Boucle de 4 minutes (4 passages espacés de 60s) pour couvrir l'intervalle
-    # entre deux déclenchements GitHub Actions (planifiés toutes les 5 min)
-    for i in range(4):
-        print(f"--- Vérification {i+1}/4 ---")
-        check_once()
-        if i < 3:
-            time.sleep(60)
+
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self) -> None:
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain; charset=utf-8")
+        self.end_headers()
+        self.wfile.write(b"Watcher ARPEJ actif")
+
+    def log_message(self, format: str, *args: object) -> None:
+        return  # Évite d'encombrer les logs avec les health checks
+
+
+def run_http_server() -> None:
+    port = int(os.environ.get("PORT", 8080))
+    server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    print(f"[HTTP] Serveur d'écoute prêt sur le port {port}")
+    server.serve_forever()
 
 
 if __name__ == "__main__":
-    main()
+    t = threading.Thread(target=scraper_worker, daemon=True)
+    t.start()
+    run_http_server()
