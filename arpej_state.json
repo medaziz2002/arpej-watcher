@@ -1,0 +1,42 @@
+{
+  "https://www.arpej.fr/fr/residence/jacques-henri-lartigue-residence-etudiante-courbevoie/": {
+    "availability": 0,
+    "name": "Résidence étudiante Jacques-Henri Lartigue"
+  },
+  "https://www.arpej.fr/fr/residence/residence-etudiants-joinville-le-pont-les-nouveaux-ponts-arpej-2/": {
+    "availability": 0,
+    "name": "Résidence étudiante Les Nouveaux Ponts – Joinville Le Pont"
+  },
+  "https://www.arpej.fr/fr/residence/residence-etudiante-saint-mande/": {
+    "availability": 0,
+    "name": "Résidence étudiante Pierre Grach"
+  },
+  "https://www.arpej.fr/fr/residence/saint-mande-residence-etudiante-paris/": {
+    "availability": 0,
+    "name": "Résidence étudiante Juliette Drouet"
+  },
+  "https://www.arpej.fr/fr/residence/eugene-chevreul-residence-etudiante-massy/": {
+    "availability": 0,
+    "name": "Résidence étudiante Eugène Chevreul"
+  },
+  "https://www.arpej.fr/fr/residence/val-pompadour-residence-etudiante-valenton/": {
+    "availability": 0,
+    "name": "Résidence étudiante Val Pompadour"
+  },
+  "https://www.arpej.fr/fr/residence/volti-residence-etudiante-cachan/": {
+    "availability": 1,
+    "name": "Résidence étudiante Volti"
+  },
+  "https://www.arpej.fr/fr/residence/nicolas-appert-residence-etudiante-ivry-sur-seine/": {
+    "availability": 0,
+    "name": "Résidence étudiante Nicolas Appert"
+  },
+  "https://www.arpej.fr/fr/residence/du-parc-residence-etudiante-charenton-le-pont/": {
+    "availability": 0,
+    "name": "Résidence étudiante Du Parc"
+  },
+  "https://www.arpej.fr/fr/residence/porte-ditalie-residence-etudiante-le-kremlin-bicetre/": {
+    "availability": 0,
+    "name": "Résidence étudiante Porte D’Italie"
+  }
+}
